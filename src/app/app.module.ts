@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
+import { OneSignal } from '@ionic-native/onesignal';
 
 // ares
 import { MyApp } from './app.component';
@@ -16,6 +17,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
 import { JournalPage } from '../pages/journal/journal';
 import { UserProvider } from '../providers/user/user';
+import { ItalyDataProvider } from '../providers/italy-data/italy-data';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { UserProvider } from '../providers/user/user';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider
+    UserProvider,
+    OneSignal,
+    ItalyDataProvider
   ]
 })
 export class AppModule {}

@@ -34,7 +34,8 @@ export class MyApp {
       splashScreen.hide();
 
       // DEBUG
-      storage.clear();
+      // storage.clear();
+      // window.localStorage.clear();
 
       // Check Authentication
       let authModal = modalCtrl.create(AuthPage);

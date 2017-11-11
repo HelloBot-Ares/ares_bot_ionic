@@ -1,10 +1,11 @@
 // lib
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 
 // ares
 import { UserProvider } from '../../providers/user/user';
+import { ItalyDataProvider } from '../../providers/italy-data/italy-data';
 
 const visibilityStateOn = {
   opacity: 1,
@@ -46,7 +47,9 @@ export class AuthPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public userProvider: UserProvider
+    public alertCtrl: AlertController,
+    public userProvider: UserProvider,
+    private italyData: ItalyDataProvider
   ) {
     // nothing to do
   }
@@ -59,5 +62,24 @@ export class AuthPage {
 
   onSetActiveSection(newSection) {
     this.activeAuthSection = newSection;
+  }
+
+  onSelectUserMunicipality() {
+    let municipalityAlert = this.alertCtrl.create({
+      cssClass: 'municipality-picker'
+    });
+
+    municipalityAlert.setTitle('Seleziona la tua Città');
+    this.italyData.provinces.forEach(prov => {
+      municipalityAlert.addInput({ type: 'radio', label: prov.nome, value: prov.nome, checked: false });
+    });
+    municipalityAlert.addButton({
+      text: 'Conferma',
+      handler: data => {
+        this.registerData.city = data;
+      }
+    });
+    municipalityAlert.present();
+
   }
 }

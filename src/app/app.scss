@@ -14,3 +14,25 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+ion-alert.municipality-picker {
+  .alert-wrapper {
+    background: linear-gradient( darken( color($colors, light), 5%), color($colors, light));
+
+    .alert-title {
+      color : color($colors, danger);
+      font-size: 1.35em;
+    }
+
+    .alert-radio-label {
+      color: #666;
+    }
+
+    button[aria-checked=true] {
+      .alert-radio-label {
+        color: color($colors, primary);
+      }
+    }
+
+  }
+}

@@ -4,13 +4,25 @@ page-auth {
     background-image: url(../assets/imgs/authPage.jpg) !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
-    background-blend-mode: overlay;
+    background-blend-mode: multiply;
+    transition: background-color .35s ease-in-out;
+
+    &.danger {
+      background-color: color($colors, danger) !important;
+      background-blend-mode: multiply;
+    }
+
+    &.success {
+      background-color: color($colors, success) !important;
+      background-blend-mode: multiply;
+    }
+
 
     .scroll-content {
       overflow: hidden !important;
 
       ion-scroll {
-        position: absolute !important;
+        position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         right: 0 !important;
@@ -20,7 +32,7 @@ page-auth {
 
 
       ion-slides {
-        position: absolute !important;
+        position: fixed !important;
         bottom: 60px !important;
 
         .swiper-pagination {
@@ -73,6 +85,47 @@ page-auth {
         }
       }
 
+    }
+  }
+
+  ion-scroll {
+    .scroll-content {
+      display: flex !important;
+      flex-direction: column;
+      min-height: 100vh !important;
+    }
+  }
+
+  #auth-form {
+    padding: 2.5rem;
+    margin: auto !important;
+    margin-top: 7.5rem !important;
+
+    input {
+      text-align: center;
+      display: block;
+      width: 100%;
+      margin: 0;
+      margin-bottom: 1.5rem;
+      padding: 0;
+      height: 50px;
+      border-radius: 3rem;
+      background: rgba( darken( color($colors, dark), 50% ), .66 );
+      appearance: none;
+      -webkit-appearance: none;
+      font-size: 1.25em;
+
+      &::-webkit-input-placeholder {
+        color: rgba(white, .66);
+      }
+
+      &[disabled] {
+        opacity: 1 !important;
+      }
+    }
+
+    button {
+      height: 50px;
     }
   }
 }

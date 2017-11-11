@@ -1,10 +1,11 @@
 page-home {
 
   ion-content {
-    background: linear-gradient(
-      darken( color($colors, primary), 20% ),
-      color($colors, primary)
-    );
+    background: linear-gradient( darken( color($colors, primary), 15% ), color($colors, primary) );
+  }
+
+  h2 {
+    color: color($colors, light);
   }
 
 }
