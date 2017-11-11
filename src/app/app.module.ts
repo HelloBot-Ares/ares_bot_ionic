@@ -18,6 +18,7 @@ import { HomePage } from '../pages/home/home';
 import { JournalPage } from '../pages/journal/journal';
 import { UserProvider } from '../providers/user/user';
 import { ItalyDataProvider } from '../providers/italy-data/italy-data';
+import { EventCardComponent } from '../components/event-card/event-card';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ItalyDataProvider } from '../providers/italy-data/italy-data';
     TabsPage,
     AuthPage,
     HomePage,
-    JournalPage
+    JournalPage,
+    EventCardComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { ItalyDataProvider } from '../providers/italy-data/italy-data';
     TabsPage,
     AuthPage,
     HomePage,
-    JournalPage
+    JournalPage,
+    EventCardComponent
   ],
   providers: [
     StatusBar,

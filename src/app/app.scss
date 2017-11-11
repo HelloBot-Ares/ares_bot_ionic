@@ -36,3 +36,29 @@ ion-alert.municipality-picker {
 
   }
 }
+
+
+// DETAIL ARROW HACK FOR MATERIAL DESIGN
+// BEGIN HACK --------------------------------------------------------
+// I've copied this style from the iOS settings.  For some reason, the
+// Android defaults do not have a right arrow on active list items that
+// can be clickable.  This seems like a bad UX to me, so I'm adding
+// it here for Android, even if it's not standard.
+$icon-detail-push-background-svg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 20'><path d='M2,20l-2-2l8-8L0,2l2-2l10,10L2,20z' fill='fg-color'/></svg>" !default;
+$item-md-detail-push-color: $list-md-border-color !default;
+@mixin md-detail-push-icon($fg-color) {
+  $svg: str-replace($icon-detail-push-background-svg, 'fg-color', $fg-color);
+  @include svg-background-image($svg);
+}
+
+button.item:not([detail-none]) .item-inner,
+a.item:not([detail-none]) .item-inner,
+.item[detail-push] .item-inner {
+  @include md-detail-push-icon($item-md-detail-push-color);
+  background-repeat: no-repeat;
+  background-position: right (15px - 2) center;
+  background-size: 14px 14px;
+  padding-right: 32px;
+}
+
+// END HACK -----------------------------------------------------------

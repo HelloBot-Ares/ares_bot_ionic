@@ -68,8 +68,9 @@ export class UserProvider {
 
     this.http.post(URL, BODY).subscribe( resp => {
       if ( JSON.parse(resp['_body']) ) {
-        this.storage.set('userAuthData', JSON.parse(resp['_body']) );
-        this.currentUser = JSON.parse(resp['_body']);
+        let userData = JSON.parse(resp['_body']).user;
+        this.storage.set('userAuthData', userData );
+        this.currentUser = userData;
         this.events.publish('auth:validation:success');
         this.initOneSignal();
       }

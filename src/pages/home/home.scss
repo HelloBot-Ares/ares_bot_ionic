@@ -4,8 +4,10 @@ page-home {
     background: linear-gradient( darken( color($colors, primary), 15% ), color($colors, primary) );
   }
 
-  h2 {
+  #welcome-message {
     color: color($colors, light);
+    font-size: 3em;
+    line-height: 1em;
   }
 
 }
