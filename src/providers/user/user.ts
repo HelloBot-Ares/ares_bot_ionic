@@ -15,8 +15,8 @@ const ONESIGNAL_TOKEN = '221ce78e-5361-46e8-ab4e-203bba2db0ea';
 @Injectable()
 export class UserProvider {
 
-  // apiBase : string = 'http://10.0.4.255:3000/api/';
-  apiBase : string = '/franci/';
+  apiBase : string = 'http://10.0.4.255:3000/api/';
+  // apiBase : string = '/franci/';
 
   currentUser: any = null;
 
