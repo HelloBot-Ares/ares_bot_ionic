@@ -1,28 +1,72 @@
 <ion-content>
-  <ion-slides pager>
+  <ion-fab top right style="opacity:0" [@visibilityStatus]="(activeAuthSection == 'login' || activeAuthSection == 'register') ? 'on' : 'off'">
+    <button ion-fab mini color="danger" (click)="onSetActiveSection('welcome')">
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-slides pager style="opacity:0" [@visibilityStatus]="activeAuthSection === 'welcome' ? 'on' : 'off'">
     <ion-slide text-center>
-      <ion-icon name="bookmarks"></ion-icon>
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
       <h3>Titolo grosso ma non troppo, dai!</h3>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint officiis adipisci iusto.</p>
     </ion-slide>
     <ion-slide text-center>
-      <ion-icon name="bookmarks"></ion-icon>
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
       <h3>Titolo grosso ma non troppo, dai!</h3>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint officiis adipisci iusto.</p>
     </ion-slide>
     <ion-slide text-center>
-      <ion-icon name="bookmarks"></ion-icon>
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
       <h3>Titolo grosso ma non troppo, dai!</h3>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint officiis adipisci iusto.</p>
     </ion-slide>
   </ion-slides>
 
+  <ion-scroll style="opacity:0" [@visibilityStatus]="activeAuthSection === 'login' ? 'on' : 'off'">
+    <ion-list style="margin-top: 10rem" inset>
+
+      <ion-item>
+        <ion-label>Username</ion-label>
+        <ion-input [(ngModel)]="loginData.username" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input [(ngModel)]="loginData.password" type="password"></ion-input>
+      </ion-item>
+
+      <button ion-button full (click)="userProvider.login(loginData)">LOGIN</button>
+    </ion-list>
+  </ion-scroll>
+  <ion-scroll style="opacity:0" [@visibilityStatus]="activeAuthSection === 'register' ? 'on' : 'off'">
+    <ion-list style="margin-top: 10rem" inset>
+
+      <ion-item>
+        <ion-label>Username</ion-label>
+        <ion-input [(ngModel)]="registerData.username" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Password</ion-label>
+        <ion-input [(ngModel)]="registerData.password" type="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>City</ion-label>
+        <ion-input [(ngModel)]="registerData.city" type="text"></ion-input>
+      </ion-item>
+
+      <button ion-button full (click)="userProvider.register(registerData)">Registrati</button>
+
+    </ion-list>
+  </ion-scroll>
+
   <ion-row no-padding no-margin>
     <ion-col no-padding no-margin>
-      <button block ion-button outline color="light">Login</button>
+      <button block ion-button outline color="light" (click)="onSetActiveSection('login')">Login</button>
     </ion-col>
     <ion-col no-padding no-margin>
-      <button block ion-button outline color="light">Registrati</button>
+      <button block ion-button outline color="light" (click)="onSetActiveSection('register')">Registrati</button>
     </ion-col>
   </ion-row>
 </ion-content>

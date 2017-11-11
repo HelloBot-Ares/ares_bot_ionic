@@ -2,6 +2,7 @@
 import { Http } from '@angular/http';
 import { Injectable, Inject } from '@angular/core';
 import { ModalController } from 'ionic-angular';
+import { Events } from 'ionic-angular/util/events';
 
 import { Storage } from '@ionic/storage';
 
@@ -11,10 +12,14 @@ import { AuthPage } from '../../pages/auth/auth';
 @Injectable()
 export class UserProvider {
 
+  // apiBase : string = 'http://10.0.4.255:3000/api/';
+  apiBase : string = '/franci/';
+
   constructor(
     public http: Http,
     public modalCtrl: ModalController,
-    @Inject(Storage) private storage: Storage
+    @Inject(Storage) private storage: Storage,
+    public events: Events
   ) {
     this.checkUserAuthentication();
   }
@@ -22,10 +27,37 @@ export class UserProvider {
   checkUserAuthentication() {
     this.storage.get('userAuthData').then(data => {
       if (data != null) {
-        // sei loggato
+        this.events.publish('auth:validation:success');
       } else {
-        let authModal = this.modalCtrl.create(AuthPage);
-        authModal.present();
+        this.events.publish('auth:validation:error');
+      }
+    });
+  }
+
+  login(userData) {
+    let URL = this.apiBase + 'signin';
+    let BODY = {
+      user: userData
+    }
+
+    this.http.post(URL, BODY).subscribe(resp => {
+      if (JSON.parse(resp['_body'])) {
+        this.storage.set('userAuthData', JSON.parse(resp['_body']));
+        this.events.publish('auth:validation:success');
+      }
+    });
+  }
+
+  register(newUserData) {
+    let URL = this.apiBase + 'signup';
+    let BODY = {
+      user: newUserData
+    }
+
+    this.http.post(URL, BODY).subscribe( resp => {
+      if ( JSON.parse(resp['_body']) ) {
+        this.storage.set('userAuthData', JSON.parse(resp['_body']) );
+        this.events.publish('auth:validation:success');
       }
     });
   }
