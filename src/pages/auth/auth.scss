@@ -1,0 +1,68 @@
+page-auth {
+  ion-content {
+    background-color: color($colors, primary) !important;
+    background-image: url(../assets/imgs/authPage.jpg) !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-blend-mode: overlay;
+
+    .scroll-content {
+      overflow: hidden !important;
+
+      ion-slides {
+        position: absolute !important;
+        bottom: 60px !important;
+
+        .swiper-pagination {
+          .swiper-pagination-bullet {
+            background-color: white !important;
+          }
+        }
+
+        ion-slide {
+          ion-icon {
+            margin-bottom: 2.5rem;
+            font-size: 15rem;
+            color: color($colors, light);
+          }
+
+          h3 {
+            color: color($colors, secondary);
+            font-size: 1.5em;
+            padding: 0 1.5rem;
+            margin: 0;
+            margin-bottom: .5rem;
+          }
+
+          p {
+            color: color($colors, light);
+            font-size: .85em;
+            padding: 0 1.5rem;
+            margin: 0;
+
+          }
+        }
+      }
+
+      ion-row {
+        position: absolute !important;
+        width: 100% !important;
+        bottom: 0;
+
+        ion-col {
+          &:first-child {
+            border-right: 1px solid rgba(white, .35) !important;
+          }
+        }
+
+        button {
+          font-size: 1.25em;
+          margin: 0 !important;
+          height: 60px !important;
+          border: none !important;
+        }
+      }
+
+    }
+  }
+}

@@ -1,3 +1,10 @@
 page-home {
 
+  ion-content {
+    background: linear-gradient(
+      darken( color($colors, primary), 20% ),
+      color($colors, primary)
+    );
+  }
+
 }
