@@ -9,6 +9,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 import { OneSignal } from '@ionic-native/onesignal';
+import { Geolocation } from '@ionic-native/geolocation';
+
+import { CalendarModule } from "ion2-calendar";
+import { MomentModule } from 'angular2-moment';
+import "moment/locale/it"
 
 // ares
 import { MyApp } from './app.component';
@@ -19,6 +24,13 @@ import { JournalPage } from '../pages/journal/journal';
 import { UserProvider } from '../providers/user/user';
 import { ItalyDataProvider } from '../providers/italy-data/italy-data';
 import { EventCardComponent } from '../components/event-card/event-card';
+import { SearchEventPage } from '../pages/search-event/search-event';
+import { TopicPickerPage } from '../pages/topic-picker/topic-picker';
+import { GradCardComponent } from '../components/grad-card/grad-card';
+import { TopicProvider } from '../providers/topic/topic';
+import { EventProvider } from '../providers/event/event';
+import { SearchResultsPage } from '../pages/search-results/search-results';
+import { NewEventPage } from '../pages/new-event/new-event';
 
 @NgModule({
   declarations: [
@@ -27,16 +39,24 @@ import { EventCardComponent } from '../components/event-card/event-card';
     AuthPage,
     HomePage,
     JournalPage,
-    EventCardComponent
+    SearchEventPage,
+    NewEventPage,
+    SearchResultsPage,
+    TopicPickerPage,
+    EventCardComponent,
+    GradCardComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
     IonicModule.forRoot(MyApp, {
-      mode: 'md'
+      mode: 'md',
+      pageTransition: 'ios-transition'
     }),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    MomentModule,
+    CalendarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -45,7 +65,12 @@ import { EventCardComponent } from '../components/event-card/event-card';
     AuthPage,
     HomePage,
     JournalPage,
-    EventCardComponent
+    SearchEventPage,
+    NewEventPage,
+    SearchResultsPage,
+    TopicPickerPage,
+    EventCardComponent,
+    GradCardComponent
   ],
   providers: [
     StatusBar,
@@ -53,7 +78,10 @@ import { EventCardComponent } from '../components/event-card/event-card';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     OneSignal,
-    ItalyDataProvider
+    ItalyDataProvider,
+    TopicProvider,
+    Geolocation,
+    EventProvider
   ]
 })
 export class AppModule {}

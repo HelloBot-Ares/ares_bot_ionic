@@ -1,0 +1,28 @@
+page-new-event {
+
+  ion-content {
+    background: linear-gradient( darken( color($colors, primary), 15%), color($colors, primary));
+  }
+
+  ion-slides {
+
+    .swiper-pagination {
+      .swiper-pagination-bullet {
+        background-color: rgba(white, .35) !important;
+      }
+    }
+
+    ion-slide {
+      display: flex;
+      // max-height: calc(100vh - 120px);
+      padding-top: 0;
+      padding-bottom: 10rem !important;
+
+      h3 {
+        margin: auto;
+        padding: 0 0 2.5rem 0;
+        color: rgba(white, .85);
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Crea Gruppo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content fullscreen>
+  <ion-slides #searchSlides pager direction="vertical">
+
+    <ion-slide text-center padding-bottom>
+      <h3 no-margin padding-left padding-right>Per quale argomento stai cercando aiuto?</h3>
+      <div no-margin padding-bottom padding-right padding-left>
+        <div padding-right padding-left>
+          <div padding-right padding-left>
+            <grad-card class="c5" icon="bookmarks" [textB]="newEventData.topic ? newEventData.topic.name : 'Seleziona Argomento'"
+              (click)="onSelectArgument()"></grad-card>
+          </div>
+        </div>
+      </div>
+      <div no-margin padding-right padding-left>
+        <div padding-right padding-left>
+          <div padding-right padding-left>
+            <button ion-button full round color="success" (click)="onNextSlide()" [disabled]="!newEventData.topic">
+              Avanti
+            </button>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+
+    <ion-slide text-center padding-bottom>
+      <h3 no-margin padding-left padding-right>Dai un nome al tuo gruppo di studio...</h3>
+      <div no-margin padding-bottom padding-right padding-left>
+        <div padding-right padding-left>
+          <div padding-right padding-left>
+            <grad-card class="c4" icon="bookmark" [textB]="newEventData.subject ? newEventData.subject : 'Imposta Titolo'" (click)="onAskTitle()"></grad-card>
+          </div>
+        </div>
+      </div>
+      <div no-margin padding-right padding-left>
+        <div padding-right padding-left>
+          <div padding-right padding-left>
+            <button ion-button full round color="success" (click)="onNextSlide()" [disabled]="!newEventData.topic">
+              Avanti
+            </button>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+
+    <ion-slide text-center padding-bottom>
+      <h3 padding>Imposta un limite di partecipanti per mantenere la calma.</h3>
+      <ion-row padding-top padding-right padding-left>
+        <ion-col col-4 padding-left>
+          <grad-card class="c1" text="3" (click)="onSetMaxPartecipants(3)"></grad-card>
+        </ion-col>
+        <ion-col col-8 padding-right>
+          <grad-card class="c2" text="6" (click)="onSetMaxPartecipants(6)"></grad-card>
+        </ion-col>
+      </ion-row>
+      <ion-row padding-right padding-left>
+        <ion-col padding-right padding-left>
+          <grad-card class="c3" text="12" (click)="onSetMaxPartecipants(12)"></grad-card>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+    <ion-slide text-center padding-bottom>
+      <h3 padding>Quando vorresti incontrati con gli altri membri?</h3>
+      <ion-row padding-top padding-right padding-left>
+        <ion-col col-3></ion-col>
+        <ion-col col-6>
+          <grad-card class="c4" [text]="newEventData.starting_at | amDateFormat: 'D'" [textB]="newEventData.starting_at | amDateFormat: 'MMM'"
+          (click)="onSetDate('starting_at')"></grad-card>
+        </ion-col>
+        <ion-col col-3></ion-col>
+      </ion-row>
+      <div padding-top padding-right padding-left>
+        <div padding-right padding-left>
+          <button ion-button full round color="success" (click)="onNextSlide()">
+            Va bene!
+          </button>
+        </div>
+      </div>
+    </ion-slide>
+
+    <ion-slide text-center padding-bottom>
+      <h3 no-margin padding-left padding-right>Dove possiamo trovarti?</h3>
+      <ion-row padding>
+        <ion-col col-5 padding-left>
+          <grad-card class="c1" icon="pin" textB="Localizza" (click)="onLocateMe()"></grad-card>
+        </ion-col>
+        <ion-col col-7 padding-right>
+          <grad-card class="c2" icon="map" [textB]="newEventData.location ? newEventData.location : 'Seleziona Città'" (click)="onSelectCity()"></grad-card>
+        </ion-col>
+      </ion-row>
+      <div padding-right padding-left>
+        <div padding-right padding-left>
+          <button ion-button full round large color="success" [disabled]="!newEventData.location" (click)="onCreateEvent()">
+            CREA GRUPPO!
+          </button>
+        </div>
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

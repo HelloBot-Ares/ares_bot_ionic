@@ -1,15 +1,21 @@
 <ion-content>
   <ion-fab top right padding-top>
-    <button ion-fab mini>
-      <ion-icon name="contact"></ion-icon>
+    <button ion-fab mini color="danger" (click)="userProvider.logout()">
+      <ion-icon name="exit"></ion-icon>
     </button>
   </ion-fab>
 
   <h1 id="welcome-message" padding>Benvenuto,<br>{{userProvider.currentUser?.username}}!</h1>
 
   <ion-row padding>
-    <ion-col col-6 *ngFor="let i of [1,2,3,4,5]">
-      <event-card class="c{{i}}"></event-card>
+    <ion-col col-6>
+      <event-card class="c1" (click)="onSearchPage()" text="TROVA UN GRUPPO DI STUDIO" icon="search" [event]="null"></event-card>
+    </ion-col>
+    <ion-col col-6>
+      <event-card class="c2" (click)="onCreateGroup()" text="CREA GRUPPO DI STUDIO" icon="add" [event]="null"></event-card>
+    </ion-col>
+    <ion-col col-6 *ngFor="let event of userEvents; let i = index">
+      <event-card class="c{{i}}" [event]="event"></event-card>
     </ion-col>
   </ion-row>
 

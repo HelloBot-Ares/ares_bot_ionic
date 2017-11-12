@@ -26,7 +26,10 @@ $colors: (
   primary :   #224482,
   secondary : #F9D466,
   danger :    #D54B3F,
-  success :   #56A55C,
+  success:    #6CC466,
+
+
+
   light :     #EFEFEF,
   dark:       #232120
 );
@@ -53,6 +56,21 @@ $font-family-md-base: "Baloo", "Roboto", "Helvetica Neue", sans-serif;
 
 // buttons
 $button-md-border-radius: 0;
+
+// searchbar
+$searchbar-md-input-text-color: white;
+$searchbar-md-input-background-color: darken( color($colors, primary), 15% );
+$searchbar-md-input-search-icon-color: rgba(white, .6);
+
+// loading
+$loading-md-background: color($colors, primary);
+$loading-md-border-radius: 1rem;
+$loading-md-spinner-color: color($colors, secondary);
+
+
+
+
+
 
 
 

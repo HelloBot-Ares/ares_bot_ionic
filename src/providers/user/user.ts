@@ -15,7 +15,7 @@ const ONESIGNAL_TOKEN = '221ce78e-5361-46e8-ab4e-203bba2db0ea';
 @Injectable()
 export class UserProvider {
 
-  apiBase : string = 'http://10.0.4.255:3000/api/';
+  apiBase : string = 'http://10.0.4.251:3000/api/';
   // apiBase : string = '/franci/';
 
   currentUser: any = null;
@@ -77,24 +77,29 @@ export class UserProvider {
     });
   }
 
+  logout() {
+    this.storage.clear();
+    window.localStorage.clear();
+    this.events.publish('auth:validation:error');
+  }
 
   // private
 
   private initOneSignal() {
     if (window['cordova']) {
-      this.oneSignal.startInit(ONESIGNAL_TOKEN, '1009092796');
-      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
-      this.oneSignal.registerForPushNotifications();
+      // this.oneSignal.startInit(ONESIGNAL_TOKEN, '1009092796');
+      // this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+      // this.oneSignal.registerForPushNotifications();
 
-      this.oneSignal.handleNotificationReceived().subscribe(() => {
-        // do something when notification is received
-      });
+      // this.oneSignal.handleNotificationReceived().subscribe(() => {
+      //   // do something when notification is received
+      // });
 
-      this.oneSignal.handleNotificationOpened().subscribe(() => {
-        // do something when a notification is opened
-      });
+      // this.oneSignal.handleNotificationOpened().subscribe(() => {
+      //   // do something when a notification is opened
+      // });
 
-      this.oneSignal.endInit();
+      // this.oneSignal.endInit();
     } else {
       this.toastCtrl.create({message: 'MISSING_PLUGIN: ONE_SIGNAL', duration: 1000}).present();
     }

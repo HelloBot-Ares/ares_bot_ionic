@@ -1,16 +1,10 @@
-// lib
 import { Component, Input } from '@angular/core';
 
-// ares
-
 @Component({
-  selector: 'event-card',
-  templateUrl: 'event-card.html'
+  selector: 'grad-card',
+  templateUrl: 'grad-card.html'
 })
-export class EventCardComponent {
-
-  @Input()
-  event: any;
+export class GradCardComponent {
 
   @Input()
   icon: string;
@@ -18,7 +12,11 @@ export class EventCardComponent {
   @Input()
   text: string;
 
+  @Input()
+  textB: string;
+
   constructor() {
+
   }
 
 }

@@ -1,9 +1,8 @@
-event-card {
-  display: flex;
+grad-card {
+    display: flex;
   flex-direction: column;
   align-items: stretch;
   width: 100%;
-  height: 30vh;
   border-radius: 1rem;
   background-color: #8BC6EC;
   background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
@@ -35,7 +34,7 @@ event-card {
 
   #date {
     color: rgba(white, .75);
-    padding: 1rem .5rem 0 0;
+    padding: 1rem;
     font-size: 7.5rem;
     line-height: .75em;
     margin: 0;
@@ -43,15 +42,17 @@ event-card {
     text-shadow: 0 .25rem .5rem rgba(black, .15);
 
     ion-icon {
-      margin: 0;
+      margin: 0 !important;
       margin-top: -1rem;
-      padding: 0 .5rem;
+      padding: 0 .5rem !important;
+      font-size: 5rem;
+      line-height: .75em;
     }
   }
 
   #month {
     color: rgba(white, .75);
-    padding: 0 1rem;
+    padding: 0 1rem 1rem 1rem;
     font-size: 2rem;
     line-height: 1em;
     margin: 0 0 auto 0 !important;
@@ -65,24 +66,11 @@ event-card {
 
   #evt-name {
     color: rgba(white, .85);
-    padding: 0 1rem .25rem 1rem;
+    padding: 0 1rem 1rem 1rem;
     font-size: 1.5rem;
-    line-height: 1em;
+    line-height: 1.15em;
     margin: auto 0 0 0 !important;
     text-align: left;
     text-shadow: 0 .25rem .75rem rgba(black, .15);
   }
-
-  #evt-owner {
-    color: rgba(color($colors, primary), .85);
-    padding: 0 1rem 1rem 1rem;
-    font-size: 1.5rem;
-    line-height: 1em;
-    margin: 0 0 auto 0 !important;
-    text-align: left;
-    text-shadow: 0 .25rem .75rem rgba(white, .15);
-  }
-
-
-
 }

@@ -15,6 +15,18 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+ion-header {
+  &:after {
+    display: none !important;
+  }
+}
+
+.custom-date-modal {
+  ion-content {
+
+  }
+}
+
 ion-alert.municipality-picker {
   .alert-wrapper {
     background: linear-gradient( darken( color($colors, light), 5%), color($colors, light));
