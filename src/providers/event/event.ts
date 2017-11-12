@@ -1,6 +1,7 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { UserProvider } from '../user/user';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 @Injectable()
 export class EventProvider {
@@ -9,7 +10,8 @@ export class EventProvider {
 
   constructor(
     public http: Http,
-    public userProvider: UserProvider
+    public userProvider: UserProvider,
+    public alertCtrl: AlertController
   ) {
 
   }
@@ -38,7 +40,7 @@ export class EventProvider {
           location: searchOpts.location,
           from_date: searchOpts.from_date,
           to_date: searchOpts.to_date,
-          max_partecipants: searchOpts.max_partecipants
+          max_participants: searchOpts.max_partecipants
         }
       }
       this.http.post(URL, BODY).subscribe(searchResults => {
@@ -61,11 +63,10 @@ export class EventProvider {
           owner_id: this.userProvider.currentUser.id,
           topic_id: newEventOpts.topic_id,
           location: newEventOpts.location,
-          from_date: newEventOpts.from_date,
-          to_date: newEventOpts.to_date,
+          starting_at: newEventOpts.starting_at,
           place_name: 'Torino',
           place_address: 'Via della Vittoria, 38 10123 Torino TO',
-          max_partecipants: newEventOpts.max_partecipants
+          max_participants: newEventOpts.max_partecipants
         }
       }
       this.http.post(URL, BODY).subscribe(newEvent => {
@@ -77,6 +78,35 @@ export class EventProvider {
       });
     });
 
+  }
+
+  askForJoin(eventToSubscribe) {
+    return new Promise((resolve, reject) => {
+      let confirm = this.alertCtrl.create({
+        title: 'Vuoi unirti a questo gruppo?',
+        buttons: [
+          {
+            text: 'No, grazie!',
+            handler: () => {
+              console.log('Disagree clicked');
+            }
+          },
+          {
+            text: 'Aggiungimi!',
+            handler: () => {
+              let URL = this.apiBase + 'events/' + eventToSubscribe.id + '/participants';
+              let BODY = {
+                participant_id: this.userProvider.currentUser.id
+              }
+              this.http.post(URL, BODY).subscribe(newEvent => {
+                resolve(true)
+              });
+            }
+          }
+        ]
+      });
+      confirm.present();
+    });
   }
 
 }

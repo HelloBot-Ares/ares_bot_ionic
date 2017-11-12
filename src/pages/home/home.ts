@@ -7,6 +7,7 @@ import { UserProvider } from '../../providers/user/user';
 import { SearchEventPage } from '../search-event/search-event';
 import { NewEventPage } from '../new-event/new-event';
 import { EventProvider } from '../../providers/event/event';
+import { EventPage } from '../event/event';
 
 @IonicPage()
 @Component({
@@ -24,14 +25,18 @@ export class HomePage {
     public eventProvider: EventProvider,
     public events: Events
   ) {
-
+    events.subscribe('auth:validation:error', data => {
+      this.userEvents = [];
+    });
   }
 
   ionViewDidLoad() {
-    setInterval(()=> {
+    setTimeout(()=> {
       this.parseUserEvents();
     }, 1000);
-    this.parseUserEvents();
+    setInterval(() => {
+      this.parseUserEvents();
+    }, 10000);
   }
 
   parseUserEvents() {
@@ -48,6 +53,13 @@ export class HomePage {
 
   onCreateGroup() {
     this.navCtrl.push(NewEventPage);
+  }
+
+  onViewEvent(event, contentClass) {
+    this.navCtrl.push(EventPage, {
+      event: event,
+      contentClass: contentClass
+    });
   }
 
 }

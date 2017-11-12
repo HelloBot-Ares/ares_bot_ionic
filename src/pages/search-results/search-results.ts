@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EventPage } from '../event/event';
 
 @IonicPage()
 @Component({
@@ -15,10 +16,16 @@ export class SearchResultsPage {
     public navParams: NavParams
   ) {
     this.searchResults = this.navParams.get('results');
-    console.log(this.searchResults);
   }
 
   ionViewDidLoad() {
+  }
+
+  onViewEvent(event, contentClass) {
+    this.navCtrl.push(EventPage, {
+      event: event,
+      contentClass: contentClass
+    });
   }
 
 }

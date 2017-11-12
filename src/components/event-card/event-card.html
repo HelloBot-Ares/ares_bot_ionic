@@ -1,8 +1,19 @@
+<ion-badge class="p-badge" *ngIf="event != null" color="light">
+  <ion-icon name="contacts"></ion-icon>
+  {{event.participants.length+1}}/{{event.max_participants}}
+</ion-badge>
 <div id="date">
   <span *ngIf="event != null">{{event.starting_at | amDateFormat: 'D'}}</span>
   <ion-icon [name]="icon" *ngIf="event == null"></ion-icon>
 </div>
 <div id="month" *ngIf="event != null" text-uppercase>{{event.starting_at | amDateFormat: 'MMM'}}</div>
 <div id="month" *ngIf="event == null">{{text}}</div>
-<div id="evt-name" *ngIf="event != null">{{event.subject}}</div>
+<div id="evt-name" *ngIf="event != null">
+  <ion-badge *ngIf="event != null" color="primary">
+    {{event.topic.code}}
+  </ion-badge>
+  <br>
+  <br>
+  {{event.subject}}
+</div>
 <div id="evt-owner" *ngIf="event != null">@{{event.owner.username}}</div>

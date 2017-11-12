@@ -33,6 +33,14 @@ event-card {
     background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
   }
 
+  ion-badge.p-badge {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    border-radius: 1rem !important;
+    color: color($colors, primary) !important;
+  }
+
   #date {
     color: rgba(white, .75);
     padding: 1rem .5rem 0 0;

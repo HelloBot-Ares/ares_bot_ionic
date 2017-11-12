@@ -31,6 +31,7 @@ import { TopicProvider } from '../providers/topic/topic';
 import { EventProvider } from '../providers/event/event';
 import { SearchResultsPage } from '../pages/search-results/search-results';
 import { NewEventPage } from '../pages/new-event/new-event';
+import { EventPage } from '../pages/event/event';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { NewEventPage } from '../pages/new-event/new-event';
     JournalPage,
     SearchEventPage,
     NewEventPage,
+    EventPage,
     SearchResultsPage,
     TopicPickerPage,
     EventCardComponent,
@@ -67,6 +69,7 @@ import { NewEventPage } from '../pages/new-event/new-event';
     JournalPage,
     SearchEventPage,
     NewEventPage,
+    EventPage,
     SearchResultsPage,
     TopicPickerPage,
     EventCardComponent,
